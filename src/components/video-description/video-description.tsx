@@ -1,4 +1,4 @@
-import './video-description.css'
+import './video-description'.scss'
 
 const VideoDescriptionComponent = () => {
   return (

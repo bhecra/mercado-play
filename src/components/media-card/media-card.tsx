@@ -1,4 +1,4 @@
-import './media-card.css'
+import './media-card'.scss'
 
 const MediaCardComponent = () => {
   return (

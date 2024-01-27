@@ -1,5 +1,5 @@
 import Search from "../search/search"
-import './sub-header.css'
+import './sub-header.scss'
 
 const SubHeaderComponent = () => {
   return (
