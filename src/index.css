@@ -31,25 +31,19 @@ body {
   display: flex;
 }
 
+h1 {
+  margin: 0;
+}
+
 main {
   max-width: 1220px;
   margin: 0 auto;
-}
-
-.sub-header-desktop {
-  padding: 1.2rem 0;
-}
-
-.sub-header__search {
-  display: flex;
 }
 
 .multimedia-content {
   display: flex;
   background-color: white;
 }
-
-
 
 .multimedia-content__list {
   padding: 10px;
@@ -62,4 +56,3 @@ main {
   margin: 0;
   text-align: left;
 }
-
