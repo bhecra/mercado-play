@@ -26,7 +26,7 @@ const VideoPlayer = () => {
 
       <video
         ref={videoRef}
-        autoPlay
+        width={"100%"}
         controls>
         <source src={'/videos/leo-dan.webm'} />
       </video>

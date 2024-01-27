@@ -16,7 +16,6 @@
 :root {
   font-family: Proxima Nova, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  
 
   color: black;
   background-color: #f5f5f5;
@@ -30,4 +29,68 @@
 body {
   margin: 0;
   display: flex;
+}
+
+main {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.sub-header-desktop {
+  padding: 1.2rem 0;
+}
+
+.sub-header__search {
+  display: flex;
+}
+
+.multimedia-content {
+  display: flex;
+  background-color: white;
+}
+
+.primary-content {
+  width: 720px;
+}
+
+.secondary-content {
+  padding: 10px;
+  width: 480px;
+  background-color: white;
+  border-radius: 0 15px 0 0;
+  flex: 1;
+}
+.secondary-content h3 {
+  margin: 0;
+  text-align: left;
+}
+
+.horizontal-media-card__content{
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid rgba(0,0,0,.1)
+}
+
+
+.horizontal-media-card__image-container {
+  align-items: center;
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  position: relative;
+  width: 135px;
+}
+.horizontal-media-card__image-container img {
+  border-radius: 6px;
+  width: 100%;
+}
+
+.horizontal-media-card__description  {
+  text-align: left;
+
+}
+.horizontal-media-card__description p {
+  margin: 0;
+  font-size: 12px;
 }
