@@ -1,0 +1,30 @@
+
+.horizontal-media-card__content{
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid rgba(0,0,0,.1)
+}
+
+
+.horizontal-media-card__image-container {
+  align-items: center;
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  position: relative;
+  width: 135px;
+}
+.horizontal-media-card__image-container img {
+  border-radius: 6px;
+  width: 100%;
+}
+
+.horizontal-media-card__description  {
+  text-align: left;
+
+}
+.horizontal-media-card__description p {
+  margin: 0;
+  font-size: 12px;
+}

@@ -1,6 +1,9 @@
+import { IconButton } from "@mui/material"
+import Button from "@mui/material/Button"
 import { useRef, useState } from "react"
+import { PlayCircle } from '@mui/icons-material';
 
-const VideoPlayer = () => {
+const VideoPlayerComponent = () => {
 
   const [playing, setPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -31,9 +34,12 @@ const VideoPlayer = () => {
         <source src={'/videos/leo-dan.webm'} />
       </video>
 
-      <button onClick={handlePlay}> Play</button>
+      <IconButton aria-label="Example">
+      </IconButton>
+
+      <Button variant="contained" onClick={handlePlay}> <PlayCircle />Play</Button>
     </div>
   )
 }
 
-export default VideoPlayer
+export default VideoPlayerComponent
