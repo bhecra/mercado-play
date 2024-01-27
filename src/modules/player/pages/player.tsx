@@ -1,6 +1,6 @@
-import MediaCardComponent from "../../components/media-card/media-card"
-import VideoPlayerComponent from "../../components/player/video-player"
-import VideoDescriptionComponent from "../../components/video-description/video-description"
+import MediaCardComponent from "../../../components/media-card/media-card"
+import VideoPlayerComponent from "../../../components/player/video-player"
+import VideoDescriptionComponent from "../../../components/video-description/video-description"
 
 const Player = () => {
   return (

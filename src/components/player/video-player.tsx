@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button"
 import { useRef, useState } from "react"
 import { PlayCircle } from '@mui/icons-material';
+import './video-player.scss'
 
 const VideoPlayerComponent = () => {
 
