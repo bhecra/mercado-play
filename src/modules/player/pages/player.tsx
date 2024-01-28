@@ -6,6 +6,11 @@ import { userManagementRepository } from "../../multimedia-item/domain/multimedi
 
 const Player = () => {
   const [multimediaItemsData, setMultimediaItemsData] = useState<MultimediaCardProps[]>()
+  const [currentItem, setCurrentItem] = useState<string>()
+
+  const onClickCard = (id: number) => {
+    setCurrentItem(`/videos/${id}.webm`)
+  }
 
   useEffect(() => {
     userManagementRepository.search().then(data => {
@@ -30,14 +35,20 @@ const Player = () => {
   return (
     <section className='multimedia-content'>
       <div className='multimedia-content__player'>
-        <VideoPlayerComponent />
+        <VideoPlayerComponent sourceFile={currentItem} />
         <VideoDescriptionComponent />
       </div>
       <div className='multimedia-content__list'>
         <h3>También te puede interesar</h3>
         <hr />
         {
-          multimediaItemsData && multimediaItemsData.length && multimediaItemsData.map(multimediaItem => <MediaCardComponent {...multimediaItem} />)
+          multimediaItemsData && multimediaItemsData.map((multimediaItem, index) => {
+            return (
+              <div key={index} onClick={() => { onClickCard(index + 1) }}>
+                <MediaCardComponent  {...multimediaItem} />
+              </div>
+            )
+          })
         }
       </div>
 

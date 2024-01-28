@@ -17,7 +17,9 @@ const MediaCardComponent: FC<Props> = ({
   category,
   duration,
   url,
-  type }) => {
+  type,
+}) => {
+
   return (
     <div className='horizontal-media-card__content'>
       <div className='horizontal-media-card__image-container'>
@@ -26,7 +28,7 @@ const MediaCardComponent: FC<Props> = ({
       <div className='horizontal-media-card__description'>
         <span>{title}</span>
         <p>{type} | {category} | {duration}</p>
-        <p>{restriction}</p>
+        <p className='horizontal-media-card__description--tag'>{restriction}</p>
       </div>
     </div>
   )
