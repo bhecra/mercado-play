@@ -1,15 +1,32 @@
+import { FC } from 'react'
 import './media-card.scss'
 
-const MediaCardComponent = () => {
+export interface Props {
+  title: string
+  description: string
+  restriction: string
+  category: string
+  type: string
+  duration: string
+  url: string
+}
+
+const MediaCardComponent: FC<Props> = ({
+  title,
+  restriction,
+  category,
+  duration,
+  url,
+  type }) => {
   return (
     <div className='horizontal-media-card__content'>
       <div className='horizontal-media-card__image-container'>
-        <img src="../src/assets/logo_large.webp" alt="" />
+        <img src={url || "../src/assets/logo_large.webp"} alt="" />
       </div>
       <div className='horizontal-media-card__description'>
-        <span>Ultima canción</span>
-        <p>Pelicula | Drama | Musica</p>
-        <p>+14</p>
+        <span>{title}</span>
+        <p>{type} | {category} | {duration}</p>
+        <p>{restriction}</p>
       </div>
     </div>
   )
