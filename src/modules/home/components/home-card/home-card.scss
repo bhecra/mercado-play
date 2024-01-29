@@ -5,6 +5,14 @@
 }
 
 .main-item{
+
+    &__text{
+        padding: 0 0 10px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
     &__principal-title{
         font-size: 18px;
         line-height: 22px;
@@ -15,4 +23,8 @@
     &__tags, &__chip{
         text-align: start;
     }
+}
+
+.css-gavykb-MuiChip-root {
+    width: 17% !important;
 }
