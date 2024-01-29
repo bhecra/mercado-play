@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Player from '../modules/player/pages/player'
-import Home from '../modules/player/home/home'
+import Home from '../modules/home/pages/home'
 
 const RouterComponent = () => {
   return (

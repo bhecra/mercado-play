@@ -2,7 +2,7 @@ import { MemoryRepository } from '../../../core/domain/repository/memory.reposit
 import { Repository } from '../../../core/domain/repository/repository';
 import { MultimediaItem } from './multimedia-item.model';
 
-export abstract class MultimediaItemRepository extends Repository<MultimediaItem> {}
+export interface MultimediaItemRepository extends Repository<MultimediaItem> {}
 
 export class MultimediaItemMemoryRepository
   extends MemoryRepository<MultimediaItem>
