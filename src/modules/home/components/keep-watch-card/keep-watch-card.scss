@@ -2,3 +2,22 @@
     display: flex;
     gap: 10px;
 }
+
+.image-keep{
+    max-width: 140px;
+}
+
+.redirect-multimedia{
+    position: relative;
+}
+
+.subtitle-keep{
+    position: absolute;
+    z-index: 1;
+    left: 3px;
+    bottom: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+}
