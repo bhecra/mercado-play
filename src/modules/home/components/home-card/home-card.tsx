@@ -9,13 +9,13 @@ const HomeCard = () => {
       <Card>
         <CardContent>
           <img className='image-ratio' alt={'Corazon de caballero'} src='https://i.ytimg.com/vi/MVvGSBKV504/sddefault.jpg'/>
-          <div>Corazon de caballero</div>
-          <div>
+          <div className="main-item__principal-title">Corazon de caballero</div>
+          <div className="main-item__tags">
             <span>Pelicula | </span>
             <span>Aventura, drama | </span>
             <span> 2h 12 m</span>
           </div>
-          <Chip label='+16'/>
+          <Chip className="main-item__chip" label='+16'/>
         </CardContent>
       </Card>
     </div>

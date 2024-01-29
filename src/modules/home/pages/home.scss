@@ -1,5 +1,7 @@
 @import '../components/home-card/home-card.scss';
+@import '../components/home-component/home-component.scss';
 @import '../components/keep-watch/keep-watch.scss';
+@import '../components/keep-watch-card/keep-watch-card.scss';
 
 .main-component{
     height: 100%;
@@ -15,12 +17,21 @@
 }
 
 .main-item{
-    min-width: 280px;
+    min-width: 270px;
     min-height: 300px;
     max-width: 400px;
     max-height: 340px;
 }
 
+.css-46bh2p-MuiCardContent-root{
+    padding: 0 !important;
+}
+
+.body-desktop{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
 
 @media only screen and (min-width: 1160px){
     .main-component .infinite-scroll {

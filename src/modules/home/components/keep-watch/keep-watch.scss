@@ -4,6 +4,7 @@
         line-height: 25px;
         font-weight: 600;
         grid-column: 1/-1;
+        text-align: start;
     }
 
     &--list-keep-watch{
@@ -16,4 +17,8 @@
         margin-left: 32px;
         width: calc(100% - 64px);
     }
+}
+
+.main_item-keep-watch{
+    grid-column: 1/-1;
 }

@@ -3,3 +3,16 @@
     object-fit: cover;
     width: 100%;
 }
+
+.main-item{
+    &__principal-title{
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 600;
+        text-align: start;
+    }
+    
+    &__tags, &__chip{
+        text-align: start;
+    }
+}

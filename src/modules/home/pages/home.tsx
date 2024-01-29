@@ -27,11 +27,11 @@ const Home = () => {
   }, [])
 
   return (
-    <div>
+    <div className="body-desktop">
       <section className="main-component">
         <div className="infinite-scroll_out">
           <div className="infinite-scroll">
-            {/* <HomeKeepWatch/> */}
+            <HomeKeepWatch/>
             <HomeComponent/>
           </div>
         </div>
