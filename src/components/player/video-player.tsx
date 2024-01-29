@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button"
 import { useRef, useState } from "react"
-import { PlayCircle } from '@mui/icons-material';
+import { PauseCircle, PlayCircle } from '@mui/icons-material';
 import './video-player.scss'
 
 const VideoPlayerComponent = ({ sourceFile }) => {
@@ -14,6 +14,7 @@ const VideoPlayerComponent = ({ sourceFile }) => {
 
 
   const handlePlay = () => {
+
     if (videoRef) {
       if (playing) {
         videoRef.current?.pause()
@@ -23,7 +24,26 @@ const VideoPlayerComponent = ({ sourceFile }) => {
     }
     setPlaying(!playing)
   }
+
+  const fullScreenButton = () => {
+    if (videoRef.current.requestFullscreen) {
+      videoRef.current.requestFullscreen();
+    }
+  }
+
+
+  const muted = () => {
+
+    console.log(videoRef.current.muted);
+
+    if (videoRef) {
+
+      videoRef.current.muted = !videoRef.current.muted
+    }
+  }
   return (
+
+
     <div className="meli-player">
       <video
         autoPlay={true}
@@ -31,11 +51,23 @@ const VideoPlayerComponent = ({ sourceFile }) => {
         width={"100%"}
         src={sourceFile || '/videos/leo-dan.webm'}
         onError={onError}
-        controls>
+        
+      >
         No se ecnotró el video <code>video</code>.
       </video>
-      <Button variant="contained" onClick={handlePlay}> <PlayCircle />Play</Button>
+      <div className="custom-controls">
+        <Button id="playPause" variant="contained" onClick={handlePlay}>{videoRef.current?.paused ? <PlayCircle /> : <PauseCircle />}</Button>
+        <input type="range" id="seek-bar" value={videoRef.current.currentTime} />
+        <button id="mute" onClick={muted}>Mute</button>
+        {/* <button id="full-screen" onClick={fullScreenButton}>Fullscreen</button> */}
+        <div className="time-indicator">0:00 / 0:00</div>
+      
+        <button id="volume">🔊</button>
+
+        <button id="full-screen" onClick={fullScreenButton}>⛶</button>
+      </div>
     </div>
+
   )
 }
 
