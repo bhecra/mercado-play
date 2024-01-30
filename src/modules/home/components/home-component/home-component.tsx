@@ -5,7 +5,6 @@ import { MovieContext } from '../../context/movie-context'
 const HomeComponent = () => {
 
 	const multimediaItems = useContext(MovieContext)
-	console.log({multimediaItems})
 	return (
 		<>
 			<div  className="main__item main__item--title">Tambien te puede interesar..</div>

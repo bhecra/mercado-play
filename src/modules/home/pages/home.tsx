@@ -6,29 +6,6 @@ import { MovieProvider } from "../context/movie-provider";
 import { MovieCard } from "../interfaces/interfaces";
 
 const Home = () => {
-  const [multimediaHome, setMultimediaHome] = useState<MovieCard[]>([])
-
-  useEffect(() => {
-    userManagementRepository.search().then(data => {
-      console.log(data)
-
-      const multimedia: MovieCard[] = data.map(item => {
-
-        return {
-          id:item.id,
-          title:item.title,
-          description:item.description,
-          category:item.category,
-          duration:item.duration,
-          restriction:item.restriction,
-          type:item.type,
-          url: item.url,
-          data: item.data,
-        }
-      })
-      setMultimediaHome(multimedia)
-    })
-  }, [])
 
   return (
     <div className="body-desktop">

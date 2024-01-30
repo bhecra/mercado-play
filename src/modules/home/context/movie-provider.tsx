@@ -1,7 +1,8 @@
-import { ReactElement, useReducer } from 'react'
+import { ReactElement, useEffect, useReducer } from 'react'
 import { MovieContext } from './movie-context'
 import { MovieCard } from '../interfaces/interfaces'
 import { movieReducer } from './movie-reducer'
+import { userManagementRepository } from '../../multimedia-item/domain/multimedia-item.provider'
 
 const INITIAL_STATE: MovieCard ={
   id: '2',
@@ -18,9 +19,33 @@ interface props {
     children:  ReactElement | ReactElement[]
 }
 
+
+
 export const MovieProvider = ({ children}: props) => {
   
   const [state, dispatch] = useReducer(movieReducer, [INITIAL_STATE])
+
+
+  useEffect(() => {
+    userManagementRepository.search().then(data => {
+
+      const multimedia: MovieCard[] = data.map(item => {
+
+        return {
+          id:item.id,
+          title:item.title,
+          description:item.description,
+          category:item.category,
+          duration:item.duration,
+          restriction:item.restriction,
+          type:item.type,
+          url: item.url,
+          data: item.data,
+        }
+      })
+      dispatch({type:'ITEMS_REQUEST',payload: multimedia})
+    })
+  }, [])
   
   return (
     <MovieContext.Provider value={state}>
