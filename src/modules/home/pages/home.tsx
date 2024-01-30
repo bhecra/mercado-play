@@ -1,28 +1,32 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { userManagementRepository } from "../../multimedia-item/domain/multimedia-item.provider"
-import HomeCard from '../components/home-card/home-card';
 import HomeKeepWatch from "../components/keep-watch/keep-watch";
 import HomeComponent from "../components/home-component/home-component";
+import { MovieProvider } from "../context/movie-provider";
+import { MovieCard } from "../interfaces/interfaces";
 
 const Home = () => {
+  const [multimediaHome, setMultimediaHome] = useState<MovieCard[]>([])
 
   useEffect(() => {
     userManagementRepository.search().then(data => {
       console.log(data)
 
-      // const multimedia: MultimediaCardProps[] = data.map(item => {
+      const multimedia: MovieCard[] = data.map(item => {
 
-      //   return {
-      //     title: item.title,
-      //     description: item.description,
-      //     restriction: item.restriction,
-      //     category: item.category,
-      //     type: item.type,
-      //     duration: item.duration,
-      //     url: item.url,
-      //   }
-      // })
-      // setMultimediaItemsData(multimedia)
+        return {
+          id:item.id,
+          title:item.title,
+          description:item.description,
+          category:item.category,
+          duration:item.duration,
+          restriction:item.restriction,
+          type:item.type,
+          url: item.url,
+          data: item.data,
+        }
+      })
+      setMultimediaHome(multimedia)
     })
   }, [])
 
@@ -31,8 +35,10 @@ const Home = () => {
       <section className="main-component">
         <div className="infinite-scroll_out">
           <div className="infinite-scroll">
-            <HomeKeepWatch/>
-            <HomeComponent/>
+            <MovieProvider >
+              <HomeKeepWatch/>
+              <HomeComponent/>
+            </MovieProvider>
           </div>
         </div>
       </section>
