@@ -1,32 +1,32 @@
 import { IHttpAdapter } from '../interface/http-adapter.interface'
 
 export class FetchAdapter<T> implements IHttpAdapter<T> {
-  async get({ url, args }: { url: string; args?: any }): Promise<Response> {
-    const headers = new Headers({
-      ...args.headers,
-    })
+  async get({ url, args }: { url: string; args?: unknown }): Promise<Response> {
+    const headers = this.setUpHeaders(args)
 
     const init: RequestInit = { method: 'GET', headers }
     const request = new Request(url, init)
-    let result = await this.httpFetch(request).catch(err => {
+    const result = await this.httpFetch(request).catch(err => {
       throw err
     })
 
     return await result.json()
   }
-  async post({ url, body, args }: { url: string; body: T; args?: any }): Promise<any> {
-    const headers = new Headers({
-      ...args.headers,
-    })
-    const init: RequestInit = { method: 'POST', headers: headers, body: JSON.stringify(body) }
+  async post({ url, body, args }: { url: string; body: T; args?: unknown }): Promise<Response> {
+    const headers = this.setUpHeaders(args)
+    const init: RequestInit = {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+    }
     const request = new Request(url, init)
     const response = await this.httpFetch(request)
     return response
   }
-  async put({ url, body, args }: { url: string; body: T; args?: any }): Promise<any> {
+  async put({ url, body, args }: { url: string; body: T; args?: unknown }): Promise<Response> {
     const init: RequestInit = {
       method: 'PUT',
-      headers: args.headers,
+      headers: this.setUpHeaders(args),
       body: JSON.stringify(body),
     }
     const request = new Request(url, init)
@@ -34,20 +34,20 @@ export class FetchAdapter<T> implements IHttpAdapter<T> {
     return response
   }
 
-  async patch({ url, body, args }: { url: string; body: T; args?: any }): Promise<Response> {
+  async patch({ url, body, args }: { url: string; body: T; args?: unknown }): Promise<Response> {
     const init: RequestInit = {
       method: 'PATCH',
-      headers: args.headers,
+      headers: this.setUpHeaders(args),
       body: JSON.stringify(body),
     }
     const request = new Request(url, init)
     const response = await this.httpFetch(request)
     return response
   }
-  async delete({ url, body, args }: { url: string; body: T; args?: any }): Promise<any> {
+  async delete({ url, body, args }: { url: string; body: T; args?: unknown }): Promise<Response> {
     const init: RequestInit = {
       method: 'DELETE',
-      headers: args.headers,
+      headers: this.setUpHeaders(args),
     }
 
     if (body) init['body'] = JSON.stringify(body)
@@ -57,31 +57,16 @@ export class FetchAdapter<T> implements IHttpAdapter<T> {
     return response
   }
 
+  private setUpHeaders(args: unknown): Headers {
+    return new Headers((args && typeof args === 'object' && 'headers' in args ? args.headers : {}) as HeadersInit)
+  }
+
   private async httpFetch(request: Request): Promise<Response> {
-    let response: Response
-
-    try {
-      response = await fetch(request)
-      if (response.ok) {
-        return response
-      } else {
-        throw new Error(response.status.toString(), { cause: response }) // Lanzar un error con el código de estado HTTP
-      }
-    } catch (error) {
-      let errorMessage = ''
-
-      ;(errorMessage = error.message), (error['detail'] = await error?.cause?.json())
-
-      // if (process.env.ENV !== 'production')
-      //   console.error(
-      //     errorMessage,
-      //     '\nError cause: ',
-      //     error?.cause,
-      //     '\nError detail: ',
-      //     error['detail']
-      //   );
-
-      throw error // Lanzar un error con el código de estado HTTP
+    const response: Response = await fetch(request)
+    if (response.ok) {
+      return response
+    } else {
+      throw new Error(response.status.toString()) // Lanzar un error con el código de estado HTTP
     }
   }
 }
