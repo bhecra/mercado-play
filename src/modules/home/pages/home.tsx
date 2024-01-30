@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react"
-import { userManagementRepository } from "../../multimedia-item/domain/multimedia-item.provider"
+import { useEffect } from "react"
 import HomeKeepWatch from "../components/keep-watch/keep-watch";
 import HomeComponent from "../components/home-component/home-component";
 import { MovieProvider } from "../context/movie-provider";
-import { MovieCard } from "../interfaces/interfaces";
+import { httpAdapter } from "../../../utils/http/factory";
 
 const Home = () => {
+
+
+  useEffect(() => {
+    const http = httpAdapter<string>()
+    http.get({ url: 'https://pokeapi.co/api/v2/pokemon/ditto', args: '' }).then(response => console.log(response))
+  }, [])
 
   return (
     <div className="body-desktop">
@@ -13,8 +18,8 @@ const Home = () => {
         <div className="infinite-scroll_out">
           <div className="infinite-scroll">
             <MovieProvider >
-              <HomeKeepWatch/>
-              <HomeComponent/>
+              <HomeKeepWatch />
+              <HomeComponent />
             </MovieProvider>
           </div>
         </div>
