@@ -3,14 +3,22 @@ import VideoPlayerComponent from "../../../components/player/video-player"
 import VideoDescriptionComponent from "../../../components/video-description/video-description"
 import { useEffect, useState } from 'react';
 import { userManagementRepository } from "../../multimedia-item/domain/multimedia-item.provider";
+import { useNavigate, useParams } from "react-router";
 
 const Player = () => {
   const [multimediaItemsData, setMultimediaItemsData] = useState<MultimediaCardProps[]>()
   const [currentItem, setCurrentItem] = useState<string>()
 
+  const { courseId } = useParams()
+  const navigate = useNavigate()
+
   const onClickCard = (id: number) => {
-    setCurrentItem(`/videos/${id}.webm`)
+    navigate(`/player/${id}`)
   }
+
+  useEffect(() => {
+    setCurrentItem(`/videos/${courseId}.webm`)
+  }, [courseId])
 
   useEffect(() => {
     userManagementRepository.search().then(data => {

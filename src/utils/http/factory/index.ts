@@ -23,6 +23,8 @@ enum HttpAdapterEnum {
 }
 
 function createHttpAdapter<T>(params: HttpAdapterEnum): IHttpAdapter<T> {
+  console.log('Entré aqui');
+  
   const factories = {
     [HttpAdapterEnum.Axios]: new AxiosFactory<T>(),
     [HttpAdapterEnum.Fetch]: new FetchFactory<T>(),

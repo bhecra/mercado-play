@@ -6,7 +6,7 @@ import { httpAdapter } from "../../../utils/http/factory";
 
 const Home = () => {
 
-
+  
   useEffect(() => {
     const http = httpAdapter<string>()
     http.get({ url: 'https://pokeapi.co/api/v2/pokemon/ditto', args: '' }).then(response => console.log(response))

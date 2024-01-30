@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button"
 import { useRef, useState } from "react"
-import { PlayCircle } from '@mui/icons-material';
+import { PauseCircle, PlayCircle } from '@mui/icons-material';
 import './video-player.scss'
 
 const VideoPlayerComponent = ({ sourceFile }) => {
@@ -34,7 +34,10 @@ const VideoPlayerComponent = ({ sourceFile }) => {
         controls>
         No se ecnotró el video <code>video</code>.
       </video>
-      <Button variant="contained" onClick={handlePlay}> <PlayCircle />Play</Button>
+      <Button variant="contained" onClick={handlePlay}>
+        {videoRef.current?.paused ? <PlayCircle>Play</PlayCircle> : <PauseCircle>Pause</PauseCircle>}
+
+      </Button>
     </div>
   )
 }
